@@ -1,5 +1,5 @@
 # Log.io
-This is docker image for log.io
+This is docker image for [log.io](http://logio.org/)
 
 ## Usage
 ### Standalone mode
