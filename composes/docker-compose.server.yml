@@ -1,13 +1,13 @@
 version: '3'
 services:
-  logio:
+  server:
     image: cuongnb14/logio:0.1.0
-    volumes:
-      - ./log.io-conf/:/root/.log.io/
-      - '/var/log/apache2/error.log:/logs'
     ports:
       - '28778:28778'
       - '28777:28777'
+    volumes:
+      - ../log.io-conf/:/root/.log.io/
+    command: log.io-server
     logging:
       driver: "json-file"
       options:

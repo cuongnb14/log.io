@@ -10,12 +10,14 @@ MAINTAINER Cuong Nguyen cuongnb14@gmail.com
 WORKDIR /usr/src/app
 USER root
 
+RUN apt-get update -qq
+RUN apt-get install -y supervisor
+
 RUN npm install -g log.io --user 'root'
 
-# Log (server) listening port
+COPY ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
 EXPOSE 28777
-# Web admin page port
 EXPOSE 28778
 
-# Running the server
-CMD ["log.io-server"]
+CMD ["/usr/bin/supervisord"]

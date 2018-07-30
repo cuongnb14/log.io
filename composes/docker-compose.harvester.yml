@@ -1,13 +1,12 @@
 version: '3'
 services:
-  logio:
+  harvester:
     image: cuongnb14/logio:0.1.0
+    user: root
     volumes:
-      - ./log.io-conf/:/root/.log.io/
+      - ../log.io-conf/:/root/.log.io/
       - '/var/log/apache2/error.log:/logs'
-    ports:
-      - '28778:28778'
-      - '28777:28777'
+    command: log.io-harvester
     logging:
       driver: "json-file"
       options:
