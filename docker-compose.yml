@@ -1,0 +1,31 @@
+version: '3'
+services:
+  logio:
+    image: cuongnb14/logio:0.1.0
+    # environment:
+    #   - 'LOGIO_ADMIN_USER=admin'
+    #   - 'LOGIO_ADMIN_PASSWORD=admin'
+      # - LOGIO_CERTIFICATE_DNAME=
+    ports:
+      - '28778:28778'
+      - '28777:28777'
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100M"
+        max-file: "3"
+    # volumes:
+    #   - '/opt/server'
+  # harvester:
+  #   image: 'blacklabelops/logio:latest'
+  #   environment:
+  #     - 'DELAYED_START=10'
+  #     - 'LOGIO_HARVESTER_NODENAME=DockerLogs'
+  #     - 'LOGIO_HARVESTER_STREAMNAME=UnifiedLogs'
+  #     - 'LOGIO_HARVESTER_LOGFILES='
+  #     - 'LOGS_DIRECTORIES=/logs'
+  #     - 'LOG_FILE_PATTERN=*.log'
+  #   volumes:
+  #     - '/home/cuongnb/Galaxy/projects/logio/demo:/logs'
+  #   user: root
+  #   command: harvester
